@@ -1,4 +1,4 @@
-#%%
+#%% wine.data
 import pandas as pd
 import numpy as np
 
@@ -12,12 +12,12 @@ df_wine.columns = ['Class label', 'Alcohol', 'Malic acid', 'Ash',
 print('Class labels', np.unique(df_wine['Class label']))
 df_wine.head()
 
-#%%
+#%% ### Separação em conjunto de treinamento (70% da base) e teste (30% da base)
 from sklearn.model_selection import train_test_split
 X, y = df_wine.iloc[:, 1:].values, df_wine.iloc[:, 0].values
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
 
-#%% [markdown] Random forests
+#%%  <i>Random Forests</i>
 from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
 
@@ -53,7 +53,7 @@ plt.show()
 #%%
 print(forest.predict_proba([[14.23, 1.71, 2.43, 15.6, 127, 2.80, 3.06, 0.28, 2.29, 5.64, 1.04, 3.92, 1065]]))
 
-#%%
+#%% <i> Decision Tree</i>
 from sklearn.tree import DecisionTreeClassifier
 
 feat_labels = df_wine.columns[1:]
